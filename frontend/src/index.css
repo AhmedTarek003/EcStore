@@ -1,0 +1,30 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  background-color: #fff;
+  color: black;
+  --main-color: #4c6ed0;
+  --third-color: #243d88;
+  --primary-color: #eff2fb;
+}
+
+* {
+  scrollbar-width: thin;
+}
+
+/* Hide arrows in Inputs */
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+
+body.no_scroll {
+  overflow: hidden;
+}
+
+.active {
+  color: red;
+}

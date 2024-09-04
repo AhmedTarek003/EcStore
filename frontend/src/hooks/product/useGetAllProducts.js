@@ -12,9 +12,7 @@ const useGetAllProducts = (currentPage, category) => {
       setLoading(true);
       try {
         const { data } = await axios.get(
-          `/api/products${
-            currentPage && `?pageNumber=${currentPage}`
-          }&category=${category ? category : "all"}`,
+          `https://ec-store-beta.vercel.app/api/products?pageNumber=1`,
           {
             withCredentials: true,
           }

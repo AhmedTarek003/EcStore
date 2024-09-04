@@ -14,7 +14,6 @@ const useAuthUser = () => {
         const { data } = await request.get("/api/users/get_user", {
           withCredentials: true,
         });
-        console.log(data);
         setUser(data);
         setAuthUser(data);
       } catch (error) {

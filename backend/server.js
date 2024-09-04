@@ -11,7 +11,7 @@ connectMongoDB();
 
 app.use(
   cors({
-    origin: "http://localhost:3000",
+    origin: "https://ecstore-a74a1.web.app",
     // methods: ["GET", "POST", "DELETE", "PUT"],
     // allowedHeaders: [
     //   "Content-Type",

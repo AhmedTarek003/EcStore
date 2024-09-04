@@ -12,7 +12,7 @@ connectMongoDB();
 app.use(
   cors({
     origin: "https://ecstore-a74a1.web.app",
-    methods: ["GET", "POST", "DELETE", "PUT"],
+    // methods: ["GET", "POST", "DELETE", "PUT"],
     // allowedHeaders: ["Content-Type", "Authorization"],
     credentials: true,
   })

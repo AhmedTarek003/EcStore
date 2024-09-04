@@ -20,7 +20,7 @@ const useLogin = () => {
         },
         { withCredentials: true }
       );
-      console.log(data);
+      // console.log(data);
       localStorage.setItem("l", true);
       setAuthUser(data);
       // window.location.reload();

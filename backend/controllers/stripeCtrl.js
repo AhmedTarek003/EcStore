@@ -19,8 +19,8 @@ exports.stripCtrl = asyncHandler(async (req, res) => {
     payment_method_types: ["card"],
     line_items: lineItems,
     mode: "payment",
-    success_url: "http://localhost:3000/payment/success",
-    cancel_url: "http://localhost:3000/payment/cancel",
+    success_url: "https://ecstore-a74a1.web.app/payment/success",
+    cancel_url: "https://ecstore-a74a1.web.app/payment/cancel",
   };
   if (discountPercent && discountPercent > 0) {
     const coupon = await stripe.coupons.create({

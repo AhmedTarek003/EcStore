@@ -1,8 +1,8 @@
 import { useState } from "react";
-import axios from "axios";
 import toast from "react-hot-toast";
 import { useAuthContext } from "../../context/AuthContext";
 import { useNavigate } from "react-router-dom";
+import { request } from "../../utils/request";
 
 const useLogout = () => {
   const [loading, setLoading] = useState(false);
@@ -11,7 +11,7 @@ const useLogout = () => {
   const logout = async () => {
     setLoading(true);
     try {
-      await axios.post("/api/auth/logout", "-", { withCredentials: true });
+      await request.post("/api/auth/logout", "-", { withCredentials: true });
       setAuthUser(null);
       localStorage.removeItem("l");
       toast.success("logout successfully");

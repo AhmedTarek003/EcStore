@@ -1,7 +1,7 @@
 import toast from "react-hot-toast";
 import { useAuthContext } from "../../context/AuthContext";
-import axios from "axios";
 import { useState } from "react";
+import { request } from "../../utils/request";
 
 const useUpdateUser = (id) => {
   const [loading, setloading] = useState();
@@ -16,7 +16,7 @@ const useUpdateUser = (id) => {
     if (!success) return;
     setloading(true);
     try {
-      const { data } = await axios.put(
+      const { data } = await request.put(
         `/api/users/${id}`,
         {
           fullname,

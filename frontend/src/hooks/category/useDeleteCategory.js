@@ -1,13 +1,13 @@
-import axios from "axios";
 import toast from "react-hot-toast";
 import { useDispatch } from "react-redux";
 import { categoryActions } from "../../redux/slices/categorySlice";
+import { request } from "../../utils/request";
 
 const useUpdateCategory = () => {
   const dispatch = useDispatch();
   const deleteCate = async (id) => {
     try {
-      const { data } = await axios.delete(`/api/categories/${id}`, {
+      const { data } = await request.delete(`/api/categories/${id}`, {
         withCredentials: true,
       });
       dispatch(categoryActions.deletecategory(data?._id));

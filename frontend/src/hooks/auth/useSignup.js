@@ -1,7 +1,7 @@
 import { useState } from "react";
 import { useAuthContext } from "../../context/AuthContext";
 import toast from "react-hot-toast";
-import axios from "axios";
+import { request } from "../../utils/request";
 
 const useSignup = () => {
   const [loading, setloading] = useState();
@@ -23,7 +23,7 @@ const useSignup = () => {
     if (!success) return;
     setloading(true);
     try {
-      const { data } = await axios.post(
+      const { data } = await request.post(
         "/api/auth/signup",
         {
           fullname,

@@ -1,6 +1,6 @@
-import axios from "axios";
 import { useState } from "react";
 import toast from "react-hot-toast";
+import { request } from "../../utils/request";
 
 const useUpdateProduct = () => {
   const [upLoading, setLoading] = useState(false);
@@ -21,7 +21,7 @@ const useUpdateProduct = () => {
     if (!success) return;
     setLoading(true);
     try {
-      await axios.put(
+      await request.put(
         `/api/products/${id}`,
         {
           productName,

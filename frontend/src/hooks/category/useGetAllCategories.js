@@ -1,7 +1,7 @@
-import axios from "axios";
 import { useEffect, useState } from "react";
 import { useDispatch } from "react-redux";
 import { categoryActions } from "../../redux/slices/categorySlice";
+import { request } from "../../utils/request";
 
 const useGetAllCategories = () => {
   const [loading, setLoading] = useState(false);
@@ -11,7 +11,7 @@ const useGetAllCategories = () => {
     const getAllCategories = async () => {
       setLoading(true);
       try {
-        const { data } = await axios.get("/api/categories", {
+        const { data } = await request.get("/api/categories", {
           withCredentials: true,
         });
         dispatch(categoryActions.getAllCategories(data));

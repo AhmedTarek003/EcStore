@@ -1,6 +1,6 @@
-import axios from "axios";
 import { useState } from "react";
 import toast from "react-hot-toast";
+import { request } from "../../utils/request";
 
 const useUpdateCategory = () => {
   const [loading, setLoading] = useState(false);
@@ -10,7 +10,7 @@ const useUpdateCategory = () => {
     if (!success) return;
     setLoading(true);
     try {
-      await axios.put(
+      await request.put(
         `/api/categories/${id}`,
         { category },
         { withCredentials: true }

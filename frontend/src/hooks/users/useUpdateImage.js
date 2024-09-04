@@ -1,7 +1,7 @@
 import toast from "react-hot-toast";
 import { useAuthContext } from "../../context/AuthContext";
-import axios from "axios";
 import { useState } from "react";
+import { request } from "../../utils/request";
 
 const useUpdateImage = () => {
   const [loadingPic, setloadingPic] = useState();
@@ -15,7 +15,7 @@ const useUpdateImage = () => {
     if (!success) return;
     setloadingPic(true);
     try {
-      const { data } = await axios.put(
+      const { data } = await request.put(
         `/api/users/user_pic/${authUser?._id}`,
         formData,
         {

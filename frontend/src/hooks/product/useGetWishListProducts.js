@@ -1,5 +1,5 @@
-import axios from "axios";
 import { useEffect, useState } from "react";
+import { request } from "../../utils/request";
 
 const useGetWishListProducts = (productsId) => {
   const [products, setProducts] = useState([]);
@@ -8,7 +8,7 @@ const useGetWishListProducts = (productsId) => {
   useEffect(() => {
     const fetchProductById = async (id) => {
       try {
-        const { data } = await axios.get(`/api/products/${id}`);
+        const { data } = await request.get(`/api/products/${id}`);
         return data;
       } catch (error) {
         console.log(error);

@@ -1,6 +1,6 @@
-import axios from "axios";
 import { useState } from "react";
 import toast from "react-hot-toast";
+import { request } from "../../utils/request";
 
 const useAddReview = () => {
   const [loading, setLoading] = useState(false);
@@ -10,7 +10,7 @@ const useAddReview = () => {
     if (!success) return;
     setLoading(true);
     try {
-      await axios.post(
+      await request.post(
         `/api/reviews/${id}/add_review`,
         { rating },
         { withCredentials: true }

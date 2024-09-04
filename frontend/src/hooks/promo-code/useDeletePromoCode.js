@@ -1,13 +1,13 @@
-import axios from "axios";
 import { useDispatch } from "react-redux";
 import { promoCodeActions } from "../../redux/slices/promocodeSlice";
 import toast from "react-hot-toast";
+import { request } from "../../utils/request";
 
 const useDeletePromoCode = () => {
   const dispatch = useDispatch();
   const deletePromoCode = async (id) => {
     try {
-      const { data } = await axios.delete(`/api/promocode/${id}`, {
+      const { data } = await request.delete(`/api/promocode/${id}`, {
         withCredentials: true,
       });
       dispatch(promoCodeActions.deletePromoCode(data?._id));

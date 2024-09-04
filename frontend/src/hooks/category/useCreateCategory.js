@@ -1,7 +1,7 @@
-import axios from "axios";
 import { useState } from "react";
 import toast from "react-hot-toast";
 import { useNavigate } from "react-router-dom";
+import { request } from "../../utils/request";
 
 const useCreateCategory = () => {
   const [loading, setLoading] = useState(false);
@@ -12,7 +12,7 @@ const useCreateCategory = () => {
     if (!success) return;
     setLoading(true);
     try {
-      await axios.post(
+      await request.post(
         "/api/categories",
         { category },
         { withCredentials: true }

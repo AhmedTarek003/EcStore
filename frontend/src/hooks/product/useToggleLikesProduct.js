@@ -1,13 +1,12 @@
-import axios from "axios";
-// import { useEffect } from "react";
 import { useAuthContext } from "../../context/AuthContext";
+import { request } from "../../utils/request";
 
 const useToggleLikesProduct = () => {
   const { setAuthUser } = useAuthContext();
 
   const likedProduct = async (productId) => {
     try {
-      const { data } = await axios.put(
+      const { data } = await request.put(
         `/api/users/${productId}/favorite_Products`,
         {},
         { withCredentials: true }

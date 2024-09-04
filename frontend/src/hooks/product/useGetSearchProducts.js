@@ -1,7 +1,7 @@
-import axios from "axios";
 import { useEffect } from "react";
 import { useDispatch } from "react-redux";
 import { productActions } from "../../redux/slices/productSlice";
+import { request } from "../../utils/request";
 
 const useGetSearchProducts = (search) => {
   const dispatch = useDispatch();
@@ -9,7 +9,7 @@ const useGetSearchProducts = (search) => {
   useEffect(() => {
     const getAllProducts = async () => {
       try {
-        const { data } = await axios.get(
+        const { data } = await request.get(
           `/api/products?pageNumber=1&search=${search ? search : "   "}`,
           {
             withCredentials: true,

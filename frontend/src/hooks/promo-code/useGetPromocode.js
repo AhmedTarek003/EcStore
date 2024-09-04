@@ -1,8 +1,8 @@
-import axios from "axios";
 import { useDispatch } from "react-redux";
 import { promoCodeActions } from "../../redux/slices/promocodeSlice";
 import toast from "react-hot-toast";
 import { useState } from "react";
+import { request } from "../../utils/request";
 
 const useGetPromocode = () => {
   const [loading, setLoading] = useState(false);
@@ -13,7 +13,7 @@ const useGetPromocode = () => {
     if (!success) return;
     setLoading(true);
     try {
-      const { data } = await axios.post(
+      const { data } = await request.post(
         `/api/promocode/get_promo_code`,
         { promoCode },
         {

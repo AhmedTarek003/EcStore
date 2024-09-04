@@ -1,6 +1,6 @@
-import axios from "axios";
 import { useState } from "react";
 import toast from "react-hot-toast";
+import { request } from "../../utils/request";
 
 const useCreateProduct = () => {
   const [loading, setLoading] = useState(false);
@@ -43,7 +43,7 @@ const useCreateProduct = () => {
     });
     setLoading(true);
     try {
-      await axios.post("/api/products", formData, {
+      await request.post("/api/products", formData, {
         headers: { "Content-Type": "multipart/form-data" },
         withCredentials: true,
       });

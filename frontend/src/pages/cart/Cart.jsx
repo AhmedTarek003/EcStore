@@ -9,9 +9,9 @@ import Quantity from "../../components/Quantity/Quantity";
 import useGetPromocode from "../../hooks/promo-code/useGetPromocode";
 import GetPromoCodes from "../../components/getAllPromoCodes/GetPromoCodes";
 import { loadStripe } from "@stripe/stripe-js";
-import axios from "axios";
 import toast from "react-hot-toast";
 import { promoCodeActions } from "../../redux/slices/promocodeSlice";
+import { request } from "../../utils/request";
 
 const Cart = () => {
   const dispatch = useDispatch();
@@ -67,7 +67,7 @@ const Cart = () => {
     );
 
     try {
-      const { data } = await axios.post(
+      const { data } = await request.post(
         "/api/stripe/create_checkout_session",
         {
           products: cart,

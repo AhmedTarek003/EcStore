@@ -1,7 +1,7 @@
-import axios from "axios";
 import { useEffect, useState } from "react";
 import { useDispatch } from "react-redux";
 import { orderActions } from "../../redux/slices/orderSlice";
+import { request } from "../../utils/request";
 
 const useGetPurshases = (purshasesIds) => {
   const [loading, setLoading] = useState(false);
@@ -10,7 +10,7 @@ const useGetPurshases = (purshasesIds) => {
     const purshase = async (id) => {
       setLoading(true);
       try {
-        const { data } = await axios.get(`/api/orders/${id}`, {
+        const { data } = await request.get(`/api/orders/${id}`, {
           withCredentials: true,
         });
         dispatch(orderActions.getAllPurshases(data));

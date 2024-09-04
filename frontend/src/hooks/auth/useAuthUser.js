@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 import { useAuthContext } from "../../context/AuthContext";
-import axios from "axios";
+import { request } from "../../utils/request";
 
 const useAuthUser = () => {
   const [loading, setLoading] = useState(false);
@@ -11,7 +11,7 @@ const useAuthUser = () => {
     const getUser = async () => {
       setLoading(true);
       try {
-        const { data } = await axios.get("/api/users/get_user", {
+        const { data } = await request.get("/api/users/get_user", {
           withCredentials: true,
         });
         setUser(data);

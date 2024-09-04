@@ -1,6 +1,6 @@
-import axios from "axios";
 import { useState } from "react";
 import toast from "react-hot-toast";
+import { request } from "../../utils/request";
 
 const useUpdateProductImages = () => {
   const [imgLoading, setLoading] = useState(false);
@@ -14,7 +14,7 @@ const useUpdateProductImages = () => {
     });
     setLoading(true);
     try {
-      await axios.put(`/api/products/update_product_img/${id}`, formData, {
+      await request.put(`/api/products/update_product_img/${id}`, formData, {
         headers: { "Content-Type": "multipart/form-data" },
         withCredentials: true,
       });

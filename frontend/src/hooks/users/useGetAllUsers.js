@@ -1,7 +1,7 @@
-import axios from "axios";
 import { useEffect, useState } from "react";
 import { useDispatch } from "react-redux";
 import { userActions } from "../../redux/slices/userSlice";
+import { request } from "../../utils/request";
 
 const useGetAllUsers = () => {
   const [loading, setLoading] = useState();
@@ -10,7 +10,7 @@ const useGetAllUsers = () => {
   useEffect(() => {
     const getAllUsers = async () => {
       try {
-        const { data } = await axios.get("/api/users", {
+        const { data } = await request.get("/api/users", {
           withCredentials: true,
         });
         dispatch(userActions.getAllUsers(data));

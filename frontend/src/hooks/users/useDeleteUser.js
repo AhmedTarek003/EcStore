@@ -1,7 +1,7 @@
 import toast from "react-hot-toast";
-import axios from "axios";
 import { useDispatch } from "react-redux";
 import { userActions } from "../../redux/slices/userSlice";
+import { request } from "../../utils/request";
 
 const useDeleteUser = () => {
   const dispatch = useDispatch();
@@ -9,7 +9,7 @@ const useDeleteUser = () => {
   const deleteUser = async (_id) => {
     console.log(_id);
     try {
-      const { data } = await axios.delete(`/api/users/${_id}`, {
+      const { data } = await request.delete(`/api/users/${_id}`, {
         withCredentials: true,
       });
       dispatch(userActions.deleteUser(data?._id));

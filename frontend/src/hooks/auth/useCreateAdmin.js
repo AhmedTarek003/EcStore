@@ -1,8 +1,7 @@
 import { useState } from "react";
-// import { useAuthContext } from "../../context/AuthContext";
 import toast from "react-hot-toast";
-import axios from "axios";
 import { useNavigate } from "react-router-dom";
+import { request } from "../../utils/request";
 
 const useCreateAdmin = () => {
   const [loading, setloading] = useState();
@@ -34,7 +33,7 @@ const useCreateAdmin = () => {
     if (!success) return;
     setloading(true);
     try {
-      await axios.post(
+      await request.post(
         "/api/auth/signup",
 
         formData,

@@ -1,7 +1,7 @@
-import axios from "axios";
 import { useState } from "react";
 import toast from "react-hot-toast";
 import { useNavigate } from "react-router-dom";
+import { request } from "../../utils/request";
 
 const useCreatePromoCode = () => {
   const [loading, setLoading] = useState(false);
@@ -20,7 +20,7 @@ const useCreatePromoCode = () => {
 
     setLoading(true);
     try {
-      await axios.post(
+      await request.post(
         "/api/promocode",
         { promoCode, discountPercent, expireAt },
         { withCredentials: true }

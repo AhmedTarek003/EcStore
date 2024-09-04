@@ -1,7 +1,7 @@
-import axios from "axios";
 import { useEffect, useState } from "react";
 import { useDispatch } from "react-redux";
 import { orderActions } from "../../redux/slices/orderSlice";
+import { request } from "../../utils/request";
 
 const useGetAllOrders = () => {
   const [loading, setLoading] = useState(false);
@@ -11,7 +11,7 @@ const useGetAllOrders = () => {
     const getOrders = async () => {
       setLoading(true);
       try {
-        const { data } = await axios.get("/api/orders", {
+        const { data } = await request.get("/api/orders", {
           withCredentials: true,
         });
         dispatch(orderActions.getAllOrders(data));

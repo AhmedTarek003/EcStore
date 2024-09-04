@@ -1,7 +1,7 @@
-import axios from "axios";
 import { useEffect } from "react";
 import { useDispatch } from "react-redux";
 import { orderActions } from "../../redux/slices/orderSlice";
+import { request } from "../../utils/request";
 
 const useGetSalesofDay = () => {
   const dispatch = useDispatch();
@@ -9,7 +9,7 @@ const useGetSalesofDay = () => {
   useEffect(() => {
     const getSales = async () => {
       try {
-        const { data } = await axios.get("/api/orders/get_sales_of_day", {
+        const { data } = await request.get("/api/orders/get_sales_of_day", {
           withCredentials: true,
         });
         dispatch(orderActions.getSalesPerDay(...data));

@@ -1,7 +1,7 @@
 import { useState } from "react";
 import toast from "react-hot-toast";
-import axios from "axios";
 import { useAuthContext } from "../../context/AuthContext";
+import { request } from "../../utils/request";
 
 const useLogin = () => {
   const [loading, setLoading] = useState(false);
@@ -12,7 +12,7 @@ const useLogin = () => {
     if (!success) return;
     setLoading(true);
     try {
-      const { data } = await axios.post(
+      const { data } = await request.post(
         "/api/auth/login",
         {
           emailOrphoneNumber,

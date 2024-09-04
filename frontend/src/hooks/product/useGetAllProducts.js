@@ -1,7 +1,7 @@
-import axios from "axios";
 import { useEffect, useState } from "react";
 import { useDispatch } from "react-redux";
 import { productActions } from "../../redux/slices/productSlice";
+import { request } from "../../utils/request";
 
 const useGetAllProducts = (currentPage, category) => {
   const [loading, setLoading] = useState(false);
@@ -11,16 +11,13 @@ const useGetAllProducts = (currentPage, category) => {
     const getAllProducts = async () => {
       setLoading(true);
       try {
-        // const { data } = await axios.get(
-        //   `/api/products${
-        //     currentPage && `?pageNumber=${currentPage}`
-        //   }&category=${category ? category : "all"}`,
-        //   {
-        //     withCredentials: true,
-        //   }
-        // );
-        const { data } = await axios.get(
-          `https://ec-store-beta.vercel.app/api/products?pageNumber=1&category=all`
+        const { data } = await request.get(
+          `/api/products${
+            currentPage && `?pageNumber=${currentPage}`
+          }&category=${category ? category : "all"}`,
+          {
+            withCredentials: true,
+          }
         );
         dispatch(productActions.getAllProducts(data));
       } catch (error) {

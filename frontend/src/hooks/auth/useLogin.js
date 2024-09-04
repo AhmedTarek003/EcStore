@@ -20,9 +20,10 @@ const useLogin = () => {
         },
         { withCredentials: true }
       );
+      console.log(data);
       localStorage.setItem("l", true);
       setAuthUser(data);
-      window.location.reload();
+      // window.location.reload();
     } catch (error) {
       console.log(error);
       toast.error(error.response.data.msg);

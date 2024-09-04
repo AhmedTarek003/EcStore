@@ -11,11 +11,16 @@ const useGetAllProducts = (currentPage, category) => {
     const getAllProducts = async () => {
       setLoading(true);
       try {
+        // const { data } = await axios.get(
+        //   `/api/products${
+        //     currentPage && `?pageNumber=${currentPage}`
+        //   }&category=${category ? category : "all"}`,
+        //   {
+        //     withCredentials: true,
+        //   }
+        // );
         const { data } = await axios.get(
-          `https://ec-store-beta.vercel.app/api/products?pageNumber=1`,
-          {
-            withCredentials: true,
-          }
+          `https://ec-store-beta.vercel.app/api/products?pageNumber=1&category=all`
         );
         dispatch(productActions.getAllProducts(data));
       } catch (error) {

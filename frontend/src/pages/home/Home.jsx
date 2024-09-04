@@ -16,7 +16,7 @@ const Home = () => {
     <div>
       <Header />
       <Slider />
-      <Categories />
+      {/* <Categories /> */}
       <Products
         getProducts={products}
         loading={loading}

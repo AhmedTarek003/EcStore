@@ -6,6 +6,8 @@ const globelErrorHandler = require("./middlewares/golobelErrorHandler");
 
 const app = express();
 
+connectMongoDB();
+
 app.use(express.json());
 app.use(cookieParser());
 
@@ -27,6 +29,5 @@ app.use(globelErrorHandler);
 const PORT = process.env.PORT || 5000;
 
 app.listen(PORT, () => {
-  connectMongoDB();
   console.log(`Server is Runing at ${PORT}`);
 });
